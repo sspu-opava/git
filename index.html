@@ -1,29 +1,74 @@
 <!doctype html>
 <html lang="cs">
-  <head>
-    <title>Jak na git a GitHub</title>
+
+<head>
+    <title>Jak na Git a GitHub</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  </head>
-  <body>
-    <header class="jumbotron text-center"> 
-        <h1>Jak na git a GitHub</h1>
-        <p>Webový tutorial o práci s verzovacím systémem</p>
-        <main class="container-fluid">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+</head>
 
-        </main>
-        <footer class="bg-dark text-white text-center">
-            <p>&copy; 2019 SŠPU Opava, autor Marek Lučný</p>
-        </footer>
+<body>
+    <header class="jumbotron text-center">
+        <h1>Jak na Git a GitHub</h1>
+        <p>Webový tutorial o práci s verzovacím systémem</p>
+    </header>
+    <main class="container">
+        <h2>Co je Git?</h2>
+        <p>Git je verzovací systém, který využívají především vývojáři k efektivní správě svých projektů. Git umožňuje
+            nejen ukládat celou strukturu projektu (adresáře a soubory),
+            ale zároveň dovoluje zaznamenávat každou podstatnou změnu - tedy různé verze projektu. Na projektu může
+            současně pracovat více lidí a větší projekty mohou být rozděleny do dílčích úloh,
+            které jsou ve verzovacím systému označovány jako větve - branches. Ty lze v případě potřeby slučovat s
+            hlavní projektovou větví (tzv. master), ale i členit na další podřízené větve.
+            Git poskytuje dokonalý přehled o celé historii projektu a všech činnostech, které provedli jeho tvůrci.</p>
+        <p>Duchovním otcem Gitu je Linus Torvalds, tvůrce OS Linux a jeden z hlavních programátorů linuxového jádra.
+            Git měl být od svého vzniku (v roce 2005) platformou pro
+            vývojáře open source projektů, která by jim maximálně zjednodušovala práci, nevyžadovala připojení k
+            Internetu a podporovala i nelineární vývoj.</p>
+        <h2>Principy Gitu</h2>    
+        <h3>Ukládání souborů</h3>
+        <ul>
+            <li>Git každý soubor uloží pouze jednou a poté ukládá jen tzv. snapshoty (změny oproti předchozí verzi).</li>
+            <li>Všechny soubory jsou ukládány v binární podobě, což umožňuje ukládat i netextové soubory (obrázky, zvuky, videa atd.).</li>
+            <li>Soubory jsou uloženy v tzv. repozitáři, který může být umístěn jak na lokálním stroji, tak i v cloudovém úložišti.</li>
+            <li>O vytvoření snapshotu rozhoduje sám uživatel Gitu, když provede tzv. commit (uložení změn).</li>
+            <li>Jednotlivé commity (snapshoty) tvoří dílčí uzly projektu, jeho vývojové verze.</li>
+            <li>V případě nutnosti je možný návrat k předchozím verzím.</li>
+            <li>Git zajišťuje integritu souborů a zabraňuje jejich nežádoucím změnám či poškozením. Pro každý soubor i složku existuje kontrolní součet (SHA-1 hash 40místné hexadecimální číslo), který ve struktuře systému zastupuje název souboru (adresáře).</li>
+        </ul>
+        <h3>Struktura systému - pracovní prostory</h3>
+        <p>Git umožňuje současně udržovat data v lokálním i vzdáleném repozitáři. Díky tomu je možné rozpracovaný projekt na jednom lokálním počítači (např. v práci či ve škole) přenést na vzdálený repozitář (cloud)
+           a po stažení v něm pokračovat na jiném počítači (např. doma).</p>
+        <ul>
+            <li>Výchozím prvkem promyšlené struktury je tzv. working directory - pracovní složka, v níž je na počítači projekt uložen. Obsah složky může být (ale nemusí) součástí repozitáře Gitu.</li> 
+            <li>Staging area je cosi jako virtuální složka Gitu. Uživatel rozhoduje, které soubory do ní umístí. Dokud je neodešle do repozitáře, může je ze 
+                staging area odstranit.</li>
+            <li>Do lokálního repozitáře jsou sobory ze staging area odeslány příkazem commit. Uživatel tak vytváří snapshot svého projektu, který opatří stručným popisem.</li>
+            <li>Obsah lokálního repozitáře může být příkazem push přenesen do vzdáleného repozitáře v cloudu. Cloudových služeb pro Git existuje více, k nejpopulárnějším patří
+                GitHub, GitLab nebo BitBucket. Pro přístup k vzdálenému repozitáři je nutný platný uživatelský účet, který lze získat po registraci na zvoleném cloudu.</li>
+            <li>Vzdálený repozitář může být veřejný, nebo privátní. Přístup do privátních repozitářů mají kromě vlastníka jen ti, kterým to jeho majitel umožnil. Pokročilejší služby vzdáleného repozitáře
+                bývají obvykle zpoplatněny (např. přístup pro vyšší počet uživatelů u privátních repozitářů), běžné užívání je zdarma.</li>
+            <li>Obsah lokálního repozitáře podle stavu vzdáleného repozitáře lze aktualizovat příkazy pull nebo fetch. Příkazem clone je také možné vytvořit kopii vzdáleného repozitáře 
+                na lokálním počítači.</li>    
+        </ul>   
+    </main>
+    <footer class="bg-dark text-white text-center">
+        <p>&copy; 2019 SŠPU Opava, autor Marek Lučný</p>
+    </footer>
     </header>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-  </body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</body>
+
 </html>
