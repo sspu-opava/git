@@ -376,7 +376,7 @@
         <code>git init</code>
         <p>Vytvoří lokální repozitář - vznikne skrytá složka .git</p>
 
-        <h4>Konfigurace účtu, přidání souborů do staging area</h4>
+        <h4>Konfigurace účtu, přidání souborů do lokálního repozitáře</h4>
         <p>Abychom mohli lokální repozitář provázat se vzdáleným repozitářem, musíme nakonfigurovat uživatelský účet
             (jméno, e-mail), který odpovídá účtu na vzdáleném repozitáři.
             Můžeme použít globální konfiguraci, kdy se účet se vztahuje na celý počítač a každý místní repozitář
@@ -385,11 +385,11 @@
             žáci).
         </p>
         <p>Chceme-li uložit všechny, nebo jen určité soubory (složky) do lokálního repozitáře, musíme je nejprve
-            přenést do tzv. staging area gitu použitím příkazu git add.
-            Teprve poté jsou tyto soubory připraveny k provedení commitu.</p>
+            přenést do tzv. staging area gitu použitím příkazu git add. Teprve poté jsou tyto soubory připraveny k provedení commitu. Odstranění položek ze staging area lze provést příkazem git reset.</p>
+        <p>Provedením příkazu git commit dojde k uložení tzv. snapshot do lokálního repozitáře - jsou do něj vloženy všechny soubory a složky nacházející se v daném okamžiku ve staging area.</p>    
         <figure>
             <img src="images/git-local-04.jpg" alt="Konzolová aplikace Gitu" class="img-fluid">
-            <figcaption>Git - konfigurace účtu, přidání souborů do staging area</figcaption>
+            <figcaption>Git - konfigurace účtu, přidání souborů do lokálního repozitáře</figcaption>
         </figure>
         <p>
             <code>git config --local user.user "prezentace"</code><br>
