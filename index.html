@@ -426,6 +426,22 @@
             <code>git reset *.jpg</code>
         </p>
         <p>Ze staging area budou uvolněny soubory jpg.</p>
+
+        <h4>Synchronizace lokálního a vzdáleného repozitáře</h4>
+        <p>Plnohodnotných služeb Gitu dosáhneme propojením lokálního a vzdáleného repozitáře. Pomocí příkazu git push poté můžeme aktualizovat obsah repozitáře z našeho počítače
+        do repozitáře v cloudu. Příkaz git pull se zase používá pro obrácený postup, kdy potřebujeme synchronizovat obsah lokálního repozitáře podle stavu vzdáleného repozitáře.</p>
+        <figure>
+            <img src="images/git-local-05.jpg" alt="Konzolová aplikace Gitu" class="img-fluid">
+            <figcaption>Git - synchronizace lokálního a vzdáleného repozitáře</figcaption>
+        </figure>
+        <code>git remote add origin https://github.com/prezentace/pvy1.git</code>
+        <p>Připojí vzdálený repozitář pod názvem origin (obvykle zadané pojmenování), aby mohl být synchronizován s lokálním repozitářem.</p>
+        <code>git push -u origin master</code>
+        <p>Aktualizuje stav vzdáleného repozitáře (origin) podle lokálního repozitáře (master).</p>
+        <code>git push</code>
+        <p>Zkrácená podoba příkazu, která se používá u následujících aktualizací.</p>
+        <code>git pull</code>
+        <p>Aktualizuje stav lokálního repozitáře podle vzdáleného repozitáře.</p>
     </main>
     <footer class="bg-dark text-white text-center p-5 mt-5">
         <p>&copy; 2019 SŠPU Opava, autor Marek Lučný</p>
