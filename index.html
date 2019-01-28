@@ -14,459 +14,508 @@
 </head>
 
 <body>
-    <header class="jumbotron text-center">
-        <h1>Jak na Git a GitHub</h1>
-        <p>Webový tutorial o práci s verzovacím systémem</p>
+    <header class="jumbotron text-center bg-info text-uppercase">
+        <h1 class="display-3">Jak na Git a GitHub</h1>
+        <hr>
+        <p class="text-white">Webový tutorial o práci s verzovacím systémem</p>
     </header>
     <main class="container">
         <h2>Co je Git?</h2>
-        <p>Git je verzovací systém, který využívají především vývojáři k efektivní správě svých projektů. Git umožňuje
-            nejen ukládat celou strukturu projektu (adresáře a soubory),
-            ale zároveň dovoluje zaznamenávat každou podstatnou změnu - tedy různé verze projektu. Na projektu může
-            současně pracovat více lidí a větší projekty mohou být rozděleny do dílčích úloh,
-            které jsou ve verzovacím systému označovány jako větve - branches. Ty lze v případě potřeby slučovat s
-            hlavní projektovou větví (tzv. master), ale i členit na další podřízené větve.
-            Git poskytuje dokonalý přehled o celé historii projektu a všech činnostech, které provedli jeho tvůrci.</p>
-        <p>Duchovním otcem Gitu je Linus Torvalds, tvůrce OS Linux a jeden z hlavních programátorů linuxového jádra.
-            Git měl být od svého vzniku (v roce 2005) platformou pro
-            vývojáře open source projektů, která by jim maximálně zjednodušovala práci, nevyžadovala připojení k
-            Internetu a podporovala i nelineární vývoj.</p>
+        <section>
+            <p>Git je verzovací systém, který využívají především vývojáři k efektivní správě svých projektů. Git
+                umožňuje
+                nejen ukládat celou strukturu projektu (adresáře a soubory),
+                ale zároveň dovoluje zaznamenávat každou podstatnou změnu - tedy různé verze projektu. Na projektu může
+                současně pracovat více lidí a větší projekty mohou být rozděleny do dílčích úloh,
+                které jsou ve verzovacím systému označovány jako větve - branches. Ty lze v případě potřeby slučovat s
+                hlavní projektovou větví (tzv. master), ale i členit na další podřízené větve.
+                Git poskytuje dokonalý přehled o celé historii projektu a všech činnostech, které provedli jeho tvůrci.</p>
+            <p>Duchovním otcem Gitu je Linus Torvalds, tvůrce OS Linux a jeden z hlavních programátorů linuxového
+                jádra.
+                Git měl být od svého vzniku (v roce 2005) platformou pro
+                vývojáře open source projektů, která by jim maximálně zjednodušovala práci, nevyžadovala připojení k
+                Internetu a podporovala i nelineární vývoj.</p>
+        </section>
+
         <h2>Principy Gitu</h2>
-        <h3>Ukládání souborů</h3>
-        <ul>
-            <li>Git každý soubor uloží pouze jednou a poté ukládá jen tzv. snapshoty (změny oproti předchozí verzi).</li>
-            <li>Všechny soubory jsou ukládány v binární podobě, což umožňuje ukládat i netextové soubory (obrázky,
-                zvuky, videa atd.).</li>
-            <li>Soubory jsou uloženy v tzv. repozitáři, který může být umístěn jak na lokálním stroji, tak i v
-                cloudovém úložišti.</li>
-            <li>O vytvoření snapshotu rozhoduje sám uživatel Gitu, když provede tzv. commit (uložení změn).</li>
-            <li>Jednotlivé commity (snapshoty) tvoří dílčí uzly projektu, jeho vývojové verze.</li>
-            <li>V případě nutnosti je možný návrat k předchozím verzím.</li>
-            <li>Git zajišťuje integritu souborů a zabraňuje jejich nežádoucím změnám či poškozením. Pro každý soubor i
-                složku existuje kontrolní součet (SHA-1 hash 40místné hexadecimální číslo), který ve struktuře systému
-                zastupuje název souboru (adresáře).</li>
-        </ul>
-        <h3>Struktura systému - pracovní prostory</h3>
-        <p>Git umožňuje současně udržovat data v lokálním i vzdáleném repozitáři. Díky tomu je možné rozpracovaný
-            projekt na jednom lokálním počítači (např. v práci či ve škole) přenést na vzdálený repozitář (cloud)
-            a po stažení v něm pokračovat na jiném počítači (např. doma).</p>
-        <ul>
-            <li>Výchozím prvkem promyšlené struktury je tzv. working directory - pracovní složka, v níž je na počítači
-                projekt uložen. Obsah složky může být (ale nemusí) součástí repozitáře Gitu.</li>
-            <li>Staging area je cosi jako virtuální složka Gitu. Uživatel rozhoduje, které soubory do ní umístí. Dokud
-                je neodešle do repozitáře, může je ze
-                staging area odstranit.</li>
-            <li>Do lokálního repozitáře jsou sobory ze staging area odeslány příkazem commit. Uživatel tak vytváří
-                snapshot svého projektu, který opatří stručným popisem.</li>
-            <li>Obsah lokálního repozitáře může být příkazem push přenesen do vzdáleného repozitáře v cloudu.
-                Cloudových služeb pro Git existuje více, k nejpopulárnějším patří
-                GitHub, GitLab nebo BitBucket. Pro přístup k vzdálenému repozitáři je nutný platný uživatelský účet,
-                který lze získat po registraci na zvoleném cloudu.</li>
-            <li>Vzdálený repozitář může být veřejný, nebo privátní. Přístup do privátních repozitářů mají kromě
-                vlastníka jen ti, kterým to jeho majitel umožnil. Pokročilejší služby vzdáleného repozitáře
-                bývají obvykle zpoplatněny (např. přístup pro vyšší počet uživatelů u privátních repozitářů), běžné
-                užívání je zdarma.</li>
-            <li>Obsah lokálního repozitáře podle stavu vzdáleného repozitáře lze aktualizovat příkazy pull nebo fetch.
-                Příkazem clone je také možné vytvořit kopii vzdáleného repozitáře
-                na lokálním počítači.</li>
-        </ul>
-        <figure>
-            <img src="images/git-structure.png" alt="Struktura Gitu" class="img-responsive">
-            <figcaption>Struktura Gitu</figcaption>
-        </figure>
-        <h2>Instalace a vytvoření repozitářů</h2>
-        <h3>Instalace Git klienta</h3>
-        <p>Můžeme nainstalovat celou řadu klientských programů pro verzovací systém Git, řada z nich je navíc
-            multiplatformní. K nejčastěji instalovaným patří klient
-            dostupný na stránkách <a href="https://git-scm.com/downloads">git-scm.com</a>. Jeho instalace je velmi
-            jednoduchá, např. pro systémy Windows stačí stáhnout a spustit
-            příslušný instalační soubor (Git-2.20.1-64-bit.exe) a dále postupovat podle pokynů průvodce.</p>
-        <div class="row">
-            <div class="col-sm-12 col-md-6">
-                <figure>
-                    <img src="images/install-git-01.jpg" alt="Instalace Gitu" class="img-fluid">
-                    <figcaption>Instalace Gitu - volba výchozího editoru</figcaption>
-                </figure>
-            </div>
-            <div class="col-sm-12 col-md-6">
-                <figure>
-                    <img src="images/install-git-02.jpg" alt="Instalace Gitu" class="img-fluid">
-                    <figcaption>Instalace Gitu - možnost ovládání z různých konzolí</figcaption>
-                </figure>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12 col-md-6">
-                <figure>
-                    <img src="images/install-git-03.jpg" alt="Instalace Gitu" class="img-fluid">
-                    <figcaption>Instalace Gitu - uložení certifikátu pro HTTPS</figcaption>
-                </figure>
-            </div>
-            <div class="col-sm-12 col-md-6">
-                <figure>
-                    <img src="images/install-git-04.jpg" alt="Instalace Gitu" class="img-fluid">
-                    <figcaption>Instalace Gitu - konfigurace ukončení řádků</figcaption>
-                </figure>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12 col-md-6">
-                <figure>
-                    <img src="images/install-git-05.jpg" alt="Instalace Gitu" class="img-fluid">
-                    <figcaption>Instalace Gitu - volba konzolového terminálu</figcaption>
-                </figure>
-            </div>
-            <div class="col-sm-12 col-md-6">
-                <figure>
-                    <img src="images/install-git-06.jpg" alt="Instalace Gitu" class="img-fluid">
-                    <figcaption>Instalace Gitu - možnost cache, vypnutí Git Credential Manager</figcaption>
-                </figure>
-            </div>
-        </div>
-        <h3>Registrace na GitHub</h3>
-        <p>Vzdálené repozitáře můžeme vytvářet pomocí cloudové služby <a href="https://github.com">GitHub</a>. Před
-            založením prvního repozitáře se musíme
-            zaregistrovat a provedení registrace potvrdit kliknutím na odkaz, který nám přijde na uvedenou e-mailovou
-            adresu. Průběh registrace naznačují následující screenshoty:</p>
-        <div id="carousel1" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carousel1" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel1" data-slide-to="1"></li>
-                <li data-target="#carousel1" data-slide-to="2"></li>
-                <li data-target="#carousel1" data-slide-to="3"></li>
-                <li data-target="#carousel1" data-slide-to="4"></li>
-                <li data-target="#carousel1" data-slide-to="5"></li>
-                <li data-target="#carousel1" data-slide-to="6"></li>
-                <li data-target="#carousel1" data-slide-to="7"></li>
-                <li data-target="#carousel1" data-slide-to="8"></li>
-            </ol>
-            <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active">
-                    <img src="images/github-signup-01.jpg" alt="First slide" class="img-fluid">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3>1 | Registrační formulář</h3>
-                        <p>Musí být zadáno jedinečné jméno, platný e-mail a bezpečné heslo</p>
-                    </div>
+        <section>
+            <h3>Ukládání souborů</h3>
+            <ul>
+                <li>Git každý soubor uloží pouze jednou a poté ukládá jen tzv. snapshoty (změny oproti předchozí
+                    verzi).</li>
+                <li>Všechny soubory jsou ukládány v binární podobě, což umožňuje ukládat i netextové soubory
+                    (obrázky,
+                    zvuky, videa atd.).</li>
+                <li>Soubory jsou uloženy v tzv. repozitáři, který může být umístěn jak na lokálním stroji, tak i v
+                    cloudovém úložišti.</li>
+                <li>O vytvoření snapshotu rozhoduje sám uživatel Gitu, když provede tzv. commit (uložení změn).</li>
+                <li>Jednotlivé commity (snapshoty) tvoří dílčí uzly projektu, jeho vývojové verze.</li>
+                <li>V případě nutnosti je možný návrat k předchozím verzím.</li>
+                <li>Git zajišťuje integritu souborů a zabraňuje jejich nežádoucím změnám či poškozením. Pro každý
+                    soubor i
+                    složku existuje kontrolní součet (SHA-1 hash 40místné hexadecimální číslo), který ve struktuře
+                    systému
+                    zastupuje název souboru (adresáře).</li>
+            </ul>
+            <h3>Struktura systému - pracovní prostory</h3>
+            <p>Git umožňuje současně udržovat data v lokálním i vzdáleném repozitáři. Díky tomu je možné
+                rozpracovaný
+                projekt na jednom lokálním počítači (např. v práci či ve škole) přenést na vzdálený repozitář
+                (cloud)
+                a po stažení v něm pokračovat na jiném počítači (např. doma).</p>
+            <ul>
+                <li>Výchozím prvkem promyšlené struktury je tzv. working directory - pracovní složka, v níž je na
+                    počítači
+                    projekt uložen. Obsah složky může být (ale nemusí) součástí repozitáře Gitu.</li>
+                <li>Staging area je cosi jako virtuální složka Gitu. Uživatel rozhoduje, které soubory do ní
+                    umístí.
+                    Dokud
+                    je neodešle do repozitáře, může je ze
+                    staging area odstranit.</li>
+                <li>Do lokálního repozitáře jsou sobory ze staging area odeslány příkazem commit. Uživatel tak
+                    vytváří
+                    snapshot svého projektu, který opatří stručným popisem.</li>
+                <li>Obsah lokálního repozitáře může být příkazem push přenesen do vzdáleného repozitáře v cloudu.
+                    Cloudových služeb pro Git existuje více, k nejpopulárnějším patří
+                    GitHub, GitLab nebo BitBucket. Pro přístup k vzdálenému repozitáři je nutný platný uživatelský
+                    účet,
+                    který lze získat po registraci na zvoleném cloudu.</li>
+                <li>Vzdálený repozitář může být veřejný, nebo privátní. Přístup do privátních repozitářů mají kromě
+                    vlastníka jen ti, kterým to jeho majitel umožnil. Pokročilejší služby vzdáleného repozitáře
+                    bývají obvykle zpoplatněny (např. přístup pro vyšší počet uživatelů u privátních repozitářů),
+                    běžné
+                    užívání je zdarma.</li>
+                <li>Obsah lokálního repozitáře podle stavu vzdáleného repozitáře lze aktualizovat příkazy pull nebo
+                    fetch.
+                    Příkazem clone je také možné vytvořit kopii vzdáleného repozitáře
+                    na lokálním počítači.</li>
+            </ul>
+            <figure>
+                <img src="images/git-structure.png" alt="Struktura Gitu" class="img-responsive">
+                <figcaption>Struktura Gitu</figcaption>
+            </figure>
+        </section>
+        <h2>Instalace Git klienta</h2>
+        <section>
+            <p>Můžeme nainstalovat celou řadu klientských programů pro verzovací systém Git, řada z nich je navíc
+                multiplatformní. K nejčastěji instalovaným patří klient
+                dostupný na stránkách <a href="https://git-scm.com/downloads">git-scm.com</a>. Jeho instalace je velmi
+                jednoduchá, např. pro systémy Windows stačí stáhnout a spustit
+                příslušný instalační soubor (Git-2.20.1-64-bit.exe) a dále postupovat podle pokynů průvodce.</p>
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <figure>
+                        <img src="images/install-git-01.jpg" alt="Instalace Gitu" class="img-fluid">
+                        <figcaption>Instalace Gitu - volba výchozího editoru</figcaption>
+                    </figure>
                 </div>
-                <div class="carousel-item">
-                    <img src="images/github-signup-02.jpg" alt="Second slide" class="img-fluid">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3>2 | Verifikace</h3>
-                        <p>Kontrola, zda uživatel není robot</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="images/github-signup-03.jpg" alt="Third slide" class="img-fluid">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3>3 | Typ účtu</h3>
-                        <p>Zvolte bezplatnou variantu</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="images/github-signup-04.jpg" alt="First slide" class="img-fluid">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3>4 | Nepovinný dotazník</h3>
-                        <p>Můžete zadat odpovědi, nebo přeskočit k dalšímu kroku</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="images/github-signup-05.jpg" alt="Second slide" class="img-fluid">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3>5 | Uvítací obrazovka</h3>
-                        <p>Můžete si přečíst průvodce, nebo pokračovat vytvářením projektu</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="images/github-signup-06.jpg" alt="Third slide" class="img-fluid">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3>6 | Průvodce aplikací</h3>
-                        <p>Základní informace o používání GitHubu</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="images/github-signup-07.jpg" alt="First slide" class="img-fluid">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3>7 | Verifikace přes e-mail</h3>
-                        <p>Další krok požaduje verifikaci uživatele prostřednictvím e-mailu</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="images/github-signup-08.jpg" alt="Second slide" class="img-fluid">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3>8 | Verifikace přes e-mail</h3>
-                        <p>Otevřete svou e-mailovou schránku a potvrďte registraci na GitHub</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="images/github-signup-09.jpg" alt="Third slide" class="img-fluid">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3>9 | Konec registrace</h3>
-                        <p>Po ukončení registrace lze vytvořit první projekt</p>
-                    </div>
+                <div class="col-sm-12 col-md-6">
+                    <figure>
+                        <img src="images/install-git-02.jpg" alt="Instalace Gitu" class="img-fluid">
+                        <figcaption>Instalace Gitu - možnost ovládání z různých konzolí</figcaption>
+                    </figure>
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#carousel1" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carousel1" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-        <h3>Vytvoření vzdáleného repozitáře</h3>
-        <p>Po úspěšné registraci na GitHubu můžeme přikročit k založení vzdáleného repozitáře a tvorbě prvního
-            projektu:</p>
-        <div id="carousel2" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carousel2" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel2" data-slide-to="1"></li>
-                <li data-target="#carousel2" data-slide-to="2"></li>
-                <li data-target="#carousel2" data-slide-to="3"></li>
-                <li data-target="#carousel2" data-slide-to="4"></li>
-                <li data-target="#carousel2" data-slide-to="5"></li>
-                <li data-target="#carousel2" data-slide-to="6"></li>
-                <li data-target="#carousel2" data-slide-to="7"></li>
-                <li data-target="#carousel2" data-slide-to="8"></li>
-                <li data-target="#carousel2" data-slide-to="9"></li>
-                <li data-target="#carousel2" data-slide-to="10"></li>
-                <li data-target="#carousel2" data-slide-to="11"></li>
-            </ol>
-            <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active">
-                    <img src="images/github-project-01.jpg" alt="First slide" class="img-fluid">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3>1 | Vytvoření repozitáře</h3>
-                        <p>Vytvoříme název repozitáře, přidáme stručný popis</p>
-                        <p>Můžeme zvolit veřejný, nebo soukromý repozitář</p>
-                    </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <figure>
+                        <img src="images/install-git-03.jpg" alt="Instalace Gitu" class="img-fluid">
+                        <figcaption>Instalace Gitu - uložení certifikátu pro HTTPS</figcaption>
+                    </figure>
                 </div>
-                <div class="carousel-item">
-                    <img src="images/github-project-02.jpg" alt="Second slide" class="img-fluid">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3>2 | Lokální repozitář</h3>
-                        <p>Pokyny, jak lze vytvořit repozitář na lokálním počítači</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="images/github-project-03.jpg" alt="Third slide" class="img-fluid">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3>3 | Profil uživatele</h3>
-                        <p>Klikneme na volbu Your profile v uživatelském menu</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="images/github-project-04.jpg" alt="First slide" class="img-fluid">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3>4 | Nastavení profilu</h3>
-                        <p>Klikneme na volbu Settings v uživatelském menu</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="images/github-project-05.jpg" alt="Second slide" class="img-fluid">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3>5 | Přehled repozitářů</h3>
-                        <p>Klikneme na volbu Your repositories v uživatelském menu</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="images/github-project-06.jpg" alt="Third slide" class="img-fluid">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3>6 | Stránka vzdáleného repozitáře</h3>
-                        <p>Ukazuje adresáře a soubory projektu i popis projektu podle souboru README.md</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="images/github-project-07.jpg" alt="First slide" class="img-fluid">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3>7 | Změny vzdáleného repozitáře</h3>
-                        <p>Postupně se zde projevují prováděné změny - commity</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="images/github-project-08.jpg" alt="Second slide" class="img-fluid">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3>8 | Editace README.md</h3>
-                        <p>Můžeme formátovat pomocí speciálních znaků (#, * atd.)</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="images/github-project-09.jpg" alt="Third slide" class="img-fluid">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3>9 | Commit</h3>
-                        <p>Změny, provedené přímo ve vzdáleném repozitáři,<br>je nutné potvrdit příkazem Commit a
-                            připsat popis</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="images/github-project-10.jpg" alt="First slide" class="img-fluid">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3>10 | Upravený text</h3>
-                        <p>Úpravy souboru README.md se projeví na úvodní stránce projektu</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="images/github-project-11.jpg" alt="Second slide" class="img-fluid">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3>11 | Přehled commitů</h3>
-                        <p>Zobrazí se po kliknutí na odkaz commits</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="images/github-project-12.jpg" alt="Third slide" class="img-fluid">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3>12 | Detail commitu</h3>
-                        <p>Po rozkliknutí odkazu některého z commitu získáme přehled o provedených změnách</p>
-                    </div>
+                <div class="col-sm-12 col-md-6">
+                    <figure>
+                        <img src="images/install-git-04.jpg" alt="Instalace Gitu" class="img-fluid">
+                        <figcaption>Instalace Gitu - konfigurace ukončení řádků</figcaption>
+                    </figure>
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#carousel2" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carousel2" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-        <h3>Git na lokálním počítači</h3>
-        <h4>Spuštění konzolové aplikace</h4>
-        <p>K práci s lokálním repozitářem nejčastěji využíváme nainstalovanou konzolovou aplikaci Gitu (Git Bash, Git
-            CMD), nebo příkazový řádek.</p>
-        <figure>
-            <img src="images/git-local-01.jpg" alt="Konzolová aplikace Gitu" class="img-fluid">
-            <figcaption>Git - ověření funkčnosti</figcaption>
-        </figure>
-        <code>git --version</code>
-        <p>Vypíše označení verze git</p>
-        <code>git --help</code>
-        <p>Vypíše přehled příkazů a přepínačů konzolové aplikace git</p>
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <figure>
+                        <img src="images/install-git-05.jpg" alt="Instalace Gitu" class="img-fluid">
+                        <figcaption>Instalace Gitu - volba konzolového terminálu</figcaption>
+                    </figure>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <figure>
+                        <img src="images/install-git-06.jpg" alt="Instalace Gitu" class="img-fluid">
+                        <figcaption>Instalace Gitu - možnost cache, vypnutí Git Credential Manager</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+        <h2>Vzdálený repozitář - GitHub</h2>
+        <section>
+            <h3>Registrace na GitHub</h3>
+            <p>Vzdálené repozitáře můžeme vytvářet pomocí cloudové služby <a href="https://github.com">GitHub</a>. Před
+                založením prvního repozitáře se musíme
+                zaregistrovat a provedení registrace potvrdit kliknutím na odkaz, který nám přijde na uvedenou
+                e-mailovou
+                adresu. Průběh registrace naznačují následující screenshoty:</p>
+            <div id="carousel1" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel1" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel1" data-slide-to="1"></li>
+                    <li data-target="#carousel1" data-slide-to="2"></li>
+                    <li data-target="#carousel1" data-slide-to="3"></li>
+                    <li data-target="#carousel1" data-slide-to="4"></li>
+                    <li data-target="#carousel1" data-slide-to="5"></li>
+                    <li data-target="#carousel1" data-slide-to="6"></li>
+                    <li data-target="#carousel1" data-slide-to="7"></li>
+                    <li data-target="#carousel1" data-slide-to="8"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    <div class="carousel-item active">
+                        <img src="images/github-signup-01.jpg" alt="First slide" class="img-fluid">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>1 | Registrační formulář</h3>
+                            <p>Musí být zadáno jedinečné jméno, platný e-mail a bezpečné heslo</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/github-signup-02.jpg" alt="Second slide" class="img-fluid">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>2 | Verifikace</h3>
+                            <p>Kontrola, zda uživatel není robot</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/github-signup-03.jpg" alt="Third slide" class="img-fluid">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>3 | Typ účtu</h3>
+                            <p>Zvolte bezplatnou variantu</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/github-signup-04.jpg" alt="First slide" class="img-fluid">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>4 | Nepovinný dotazník</h3>
+                            <p>Můžete zadat odpovědi, nebo přeskočit k dalšímu kroku</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/github-signup-05.jpg" alt="Second slide" class="img-fluid">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>5 | Uvítací obrazovka</h3>
+                            <p>Můžete si přečíst průvodce, nebo pokračovat vytvářením projektu</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/github-signup-06.jpg" alt="Third slide" class="img-fluid">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>6 | Průvodce aplikací</h3>
+                            <p>Základní informace o používání GitHubu</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/github-signup-07.jpg" alt="First slide" class="img-fluid">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>7 | Verifikace přes e-mail</h3>
+                            <p>Další krok požaduje verifikaci uživatele prostřednictvím e-mailu</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/github-signup-08.jpg" alt="Second slide" class="img-fluid">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>8 | Verifikace přes e-mail</h3>
+                            <p>Otevřete svou e-mailovou schránku a potvrďte registraci na GitHub</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/github-signup-09.jpg" alt="Third slide" class="img-fluid">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>9 | Konec registrace</h3>
+                            <p>Po ukončení registrace lze vytvořit první projekt</p>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carousel1" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel1" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+            <h3>Vytvoření vzdáleného repozitáře</h3>
+            <p>Po úspěšné registraci na GitHubu můžeme přikročit k založení vzdáleného repozitáře a tvorbě prvního
+                projektu:</p>
+            <div id="carousel2" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel2" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel2" data-slide-to="1"></li>
+                    <li data-target="#carousel2" data-slide-to="2"></li>
+                    <li data-target="#carousel2" data-slide-to="3"></li>
+                    <li data-target="#carousel2" data-slide-to="4"></li>
+                    <li data-target="#carousel2" data-slide-to="5"></li>
+                    <li data-target="#carousel2" data-slide-to="6"></li>
+                    <li data-target="#carousel2" data-slide-to="7"></li>
+                    <li data-target="#carousel2" data-slide-to="8"></li>
+                    <li data-target="#carousel2" data-slide-to="9"></li>
+                    <li data-target="#carousel2" data-slide-to="10"></li>
+                    <li data-target="#carousel2" data-slide-to="11"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    <div class="carousel-item active">
+                        <img src="images/github-project-01.jpg" alt="First slide" class="img-fluid">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>1 | Vytvoření repozitáře</h3>
+                            <p>Vytvoříme název repozitáře, přidáme stručný popis</p>
+                            <p>Můžeme zvolit veřejný, nebo soukromý repozitář</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/github-project-02.jpg" alt="Second slide" class="img-fluid">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>2 | Lokální repozitář</h3>
+                            <p>Pokyny, jak lze vytvořit repozitář na lokálním počítači</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/github-project-03.jpg" alt="Third slide" class="img-fluid">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>3 | Profil uživatele</h3>
+                            <p>Klikneme na volbu Your profile v uživatelském menu</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/github-project-04.jpg" alt="First slide" class="img-fluid">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>4 | Nastavení profilu</h3>
+                            <p>Klikneme na volbu Settings v uživatelském menu</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/github-project-05.jpg" alt="Second slide" class="img-fluid">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>5 | Přehled repozitářů</h3>
+                            <p>Klikneme na volbu Your repositories v uživatelském menu</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/github-project-06.jpg" alt="Third slide" class="img-fluid">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>6 | Stránka vzdáleného repozitáře</h3>
+                            <p>Ukazuje adresáře a soubory projektu i popis projektu podle souboru README.md</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/github-project-07.jpg" alt="First slide" class="img-fluid">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>7 | Změny vzdáleného repozitáře</h3>
+                            <p>Postupně se zde projevují prováděné změny - commity</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/github-project-08.jpg" alt="Second slide" class="img-fluid">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>8 | Editace README.md</h3>
+                            <p>Můžeme formátovat pomocí speciálních znaků (#, * atd.)</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/github-project-09.jpg" alt="Third slide" class="img-fluid">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>9 | Commit</h3>
+                            <p>Změny, provedené přímo ve vzdáleném repozitáři,<br>je nutné potvrdit příkazem Commit a
+                                připsat popis</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/github-project-10.jpg" alt="First slide" class="img-fluid">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>10 | Upravený text</h3>
+                            <p>Úpravy souboru README.md se projeví na úvodní stránce projektu</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/github-project-11.jpg" alt="Second slide" class="img-fluid">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>11 | Přehled commitů</h3>
+                            <p>Zobrazí se po kliknutí na odkaz commits</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/github-project-12.jpg" alt="Third slide" class="img-fluid">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>12 | Detail commitu</h3>
+                            <p>Po rozkliknutí odkazu některého z commitu získáme přehled o provedených změnách</p>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carousel2" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel2" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </section>
+        <h2>Git na lokálním počítači</h2>
+        <section>
+            <h3>Inicializace a konfigurace</h3>
+            <h4>Spuštění konzolové aplikace</h4>
+            <p>K práci s lokálním repozitářem nejčastěji využíváme nainstalovanou konzolovou aplikaci Gitu (Git Bash,
+                Git
+                CMD), nebo příkazový řádek.</p>
+            <figure>
+                <img src="images/git-local-01.jpg" alt="Konzolová aplikace Gitu" class="img-fluid">
+                <figcaption>Git - ověření funkčnosti</figcaption>
+            </figure>
+            <code>git --version</code>
+            <p>Vypíše označení verze git</p>
+            <code>git --help</code>
+            <p>Vypíše přehled příkazů a přepínačů konzolové aplikace git</p>
 
-        <h4>Konfigurace proxy a SSL</h4>
-        <p>V síti, kde je přístup do Internetu řešen pomocí proxy serveru, je nutné nejprve nastavit proxy i pro
-            konzoli Gitu.</p>
-        <figure>
-            <img src="images/git-local-02.jpg" alt="Konzolová aplikace Gitu" class="img-fluid">
-            <figcaption>Git - nastavení proxy ve školní síti</figcaption>
-        </figure>
-        <code>git config --global http.proxy http://192.168.1.1:800</code>
-        <p>Nastaví přístup konzolové aplikace přes proxy server (globálně, tj. pro všechny repozitáře vytvořené na
-            daném počítači).</p>
-        <code>git config --global http.sslverify "false"</code>
-        <p>Tímto příkazem je možné pro daný počítač zrušit zabezpečnou komunikaci prostřednictvím https (SSL vrstvy),
-            která vyžaduje přítomnost
-            SSL certifikátu. Toto řešení lze použít např. pro případy, kdy na školních počítačích pracuje střídavě více
-            žáků a nepoužívají vlastní uživatelský
-            profil s uloženým certifikátem.</p>
-        <code>git config --list</code>
-        <p>Příkazem zjistíme veškerá nastavení git v daném systému.</p>
+            <h4>Konfigurace proxy a SSL</h4>
+            <p>V síti, kde je přístup do Internetu řešen pomocí proxy serveru, je nutné nejprve nastavit proxy i pro
+                konzoli Gitu.</p>
+            <figure>
+                <img src="images/git-local-02.jpg" alt="Konzolová aplikace Gitu" class="img-fluid">
+                <figcaption>Git - nastavení proxy ve školní síti</figcaption>
+            </figure>
+            <code>git config --global http.proxy http://192.168.1.1:800</code>
+            <p>Nastaví přístup konzolové aplikace přes proxy server (globálně, tj. pro všechny repozitáře vytvořené na
+                daném počítači).</p>
+            <code>git config --global http.sslverify "false"</code>
+            <p>Tímto příkazem je možné pro daný počítač zrušit zabezpečnou komunikaci prostřednictvím https (SSL
+                vrstvy),
+                která vyžaduje přítomnost
+                SSL certifikátu. Toto řešení lze použít např. pro případy, kdy na školních počítačích pracuje střídavě
+                více
+                žáků a nepoužívají vlastní uživatelský
+                profil s uloženým certifikátem.</p>
+            <code>git config --list</code>
+            <p>Příkazem zjistíme veškerá nastavení git v daném systému.</p>
 
-        <h4>Inicializace lokálního repozitáře</h4>
-        <p>Nejprve vytvoříme složku, v níž má být uložena struktura našeho projektu - tzv. working directory. V
-            ukázkovém případě to je složka pvy1. Po přesunu do této
-            složky provedeme inicializaci repozitáře (git init). V pracovní složce vznikne skrytý adresář .git, který
-            tvoří samotný repozitář.</p>
-        <div class="alert alert-danger" role="alert">
-            <strong>Smazáním skrytého adresáře .git zanikne lokální repozitář!</strong>
-        </div>
-        <figure>
-            <img src="images/git-local-03.jpg" alt="Konzolová aplikace Gitu" class="img-fluid">
-            <figcaption>Git - inicializace lokálního repozitáře</figcaption>
-        </figure>
-        <code>git init</code>
-        <p>Vytvoří lokální repozitář - vznikne skrytá složka .git</p>
+            <h4>Inicializace lokálního repozitáře</h4>
+            <p>Nejprve vytvoříme složku, v níž má být uložena struktura našeho projektu - tzv. working directory. V
+                ukázkovém případě to je složka pvy1. Po přesunu do této
+                složky provedeme inicializaci repozitáře (git init). V pracovní složce vznikne skrytý adresář .git,
+                který
+                tvoří samotný repozitář.</p>
+            <div class="alert alert-danger" role="alert">
+                <strong>Smazáním skrytého adresáře .git zanikne lokální repozitář!</strong>
+            </div>
+            <figure>
+                <img src="images/git-local-03.jpg" alt="Konzolová aplikace Gitu" class="img-fluid">
+                <figcaption>Git - inicializace lokálního repozitáře</figcaption>
+            </figure>
+            <code>git init</code>
+            <p>Vytvoří lokální repozitář - vznikne skrytá složka .git</p>
 
-        <h4>Konfigurace účtu, přidání souborů do lokálního repozitáře</h4>
-        <p>Abychom mohli lokální repozitář provázat se vzdáleným repozitářem, musíme nakonfigurovat uživatelský účet
-            (jméno, e-mail), který odpovídá účtu na vzdáleném repozitáři.
-            Můžeme použít globální konfiguraci, kdy se účet se vztahuje na celý počítač a každý místní repozitář
-            (vhodné pro soukromý či domácí počítač), nebo lokální konfiguraci,
-            kdy je účet nastaven jen pro konkrétní repozitář (vhodné pro školní podmínky, kdy na počítači pracují různí
-            žáci).
-        </p>
-        <p>Chceme-li uložit všechny, nebo jen určité soubory (složky) do lokálního repozitáře, musíme je nejprve
-            přenést do tzv. staging area gitu použitím příkazu git add. Teprve poté jsou tyto soubory připraveny k provedení commitu. Odstranění položek ze staging area lze provést příkazem git reset.</p>
-        <p>Provedením příkazu git commit dojde k uložení tzv. snapshot do lokálního repozitáře - jsou do něj vloženy všechny soubory a složky nacházející se v daném okamžiku ve staging area.</p>    
-        <figure>
-            <img src="images/git-local-04.jpg" alt="Konzolová aplikace Gitu" class="img-fluid">
-            <figcaption>Git - konfigurace účtu, přidání souborů do lokálního repozitáře</figcaption>
-        </figure>
-        <p>
-            <code>git config --local user.user "prezentace"</code><br>
-            <code>git config --local user.email "prezentace@sspu-opava.cz"</code>
-        </p>
-        <p>Nastaví uživatelský účet pro použití v lokálním repozitáři (vhodné pro školní počítače).</p>
-        <p>
-            <code>git config --global user.user "prezentace"</code><br>
-            <code>git config --global user.email "prezentace@sspu-opava.cz"</code>
-        </p>
-        <p>Nastaví uživatelský účet pro použití v celém počítači (vhodné pro domácí počítače).</p>
-        <p>
-            <code>git status</code>
-        </p>
-        <p>Zjištění aktuálního stavu repozitáře - červeně zobrazeny změněné soubory, které nejsou součástí staging
-            area, zeleně soubory ve staging area připravené na commit.</p>
-        <p>
-            <code>git add -all</code>
-        </p>
-        <p>Do staging area budou umístěny všechny soubory.</p>
-        <p>
-            <code>git add README.md</code>
-        </p>
-        <p>Do staging area bude umístěn soubor README.md.</p>
-        <p>
-            <code>git add *.jpg, *.png</code>
-        </p>
-        <p>Do staging area budou umístěny soubory (obrázky) s příponou jpg a png.</p>
-        <p>
-            <code>git reset</code>
-        </p>
-        <p>Ze staging area budou uvolněny všechny umístěné soubory.</p>
-        <p>
-            <code>git reset *.jpg</code>
-        </p>
-        <p>Ze staging area budou uvolněny soubory jpg.</p>
+            <h4>Konfigurace účtu</h4>
+            <p>Abychom mohli lokální repozitář provázat se vzdáleným repozitářem, musíme nakonfigurovat uživatelský
+                účet
+                (jméno, e-mail), který odpovídá účtu na vzdáleném repozitáři.
+                Můžeme použít globální konfiguraci, kdy se účet se vztahuje na celý počítač a každý místní repozitář
+                (vhodné pro soukromý či domácí počítač), nebo lokální konfiguraci,
+                kdy je účet nastaven jen pro konkrétní repozitář (vhodné pro školní podmínky, kdy na počítači pracují
+                různí
+                žáci).
+            </p>
+            <figure>
+                <img src="images/git-local-04.jpg" alt="Konzolová aplikace Gitu" class="img-fluid">
+                <figcaption>Git - konfigurace účtu, přidání souborů do lokálního repozitáře</figcaption>
+            </figure>
+            <p>
+                <code>git config --local user.user "prezentace"</code><br>
+                <code>git config --local user.email "prezentace@sspu-opava.cz"</code>
+            </p>
+            <p>Nastaví uživatelský účet pro použití v lokálním repozitáři (vhodné pro školní počítače).</p>
+            <p>
+                <code>git config --global user.user "prezentace"</code><br>
+                <code>git config --global user.email "prezentace@sspu-opava.cz"</code>
+            </p>
+            <p>Nastaví uživatelský účet pro použití v celém počítači (vhodné pro domácí počítače).</p>
 
-        <h4>Synchronizace lokálního a vzdáleného repozitáře</h4>
-        <p>Plnohodnotných služeb Gitu dosáhneme propojením lokálního a vzdáleného repozitáře. Pomocí příkazu git push poté můžeme aktualizovat obsah repozitáře z našeho počítače
-        do repozitáře v cloudu. Příkaz git pull se zase používá pro obrácený postup, kdy potřebujeme synchronizovat obsah lokálního repozitáře podle stavu vzdáleného repozitáře.</p>
-        <figure>
-            <img src="images/git-local-05.jpg" alt="Konzolová aplikace Gitu" class="img-fluid">
-            <figcaption>Git - synchronizace lokálního a vzdáleného repozitáře</figcaption>
-        </figure>
-        <code>git remote add origin https://github.com/prezentace/pvy1.git</code>
-        <p>Připojí vzdálený repozitář pod názvem origin (obvykle zadané pojmenování), aby mohl být synchronizován s lokálním repozitářem.</p>
-        <code>git push -u origin master</code>
-        <p>Aktualizuje stav vzdáleného repozitáře (origin) podle lokálního repozitáře (master - základní, hlavní větev repozitáře).</p>
-        <code>git push</code>
-        <p>Zkrácená podoba příkazu, která se používá u následujících aktualizací.</p>
-        <code>git pull</code>
-        <p>Aktualizuje stav lokálního repozitáře podle vzdáleného repozitáře.</p>
-        <figure>
-            <img src="images/git-local-06.jpg" alt="Konzolová aplikace Gitu" class="img-fluid">
-            <figcaption>Git - odeslání dalších commitů na vzdálených repozitář</figcaption>
-        </figure>
-        <h4>Informace o provedených snapshotech</h4>
-        <figure>
-            <img src="images/git-local-07.jpg" alt="Konzolová aplikace Gitu" class="img-fluid">
-            <figcaption>Git - informace o provedených snapshotech</figcaption>
-        </figure>
-        <code>git log</code>
-        <p>Vypíše přehled jednotlivých commitů.</p>
-        <code>git log --oneline</code>
-        <p>Vypíše zkrácený, jednořádkový přehled commitů.</p>
-        <figure>
-            <img src="images/git-local-08.jpg" alt="Konzolová aplikace Gitu" class="img-fluid">
-            <figcaption>Git - zobrazení obsahu commitů</figcaption>
-        </figure>
-        <code>git show</code>
-        <p>Přehled o posledním commitu.</p>
-        <code>git show [oznaceni_commitu]</code>
-        <p>Specifikací počátečních znaků (min. 4) získáme přehled o libovolném ze zaznamenaných snapshotů - commitů.</p>
-        <figure>
-            <img src="images/git-local-09.jpg" alt="Konzolová aplikace Gitu" class="img-fluid">
-            <figcaption>Git - jednořádkový výpis commitů (snapshotu) a zobrazení konkrétního commitu</figcaption>
-        </figure>
+            <h4>Práce s lokálním repozitářem</h4>
+            <p>Chceme-li uložit všechny, nebo jen určité soubory (složky) do lokálního repozitáře, musíme je nejprve
+                přenést do tzv. staging area gitu použitím příkazu git add. Teprve poté jsou tyto soubory připraveny k
+                provedení commitu. Odstranění položek ze staging area lze provést příkazem git reset.</p>
+            <p>Provedením příkazu git commit dojde k uložení tzv. snapshot do lokálního repozitáře - jsou do něj
+                vloženy
+                všechny soubory a složky nacházející se v daném okamžiku ve staging area.</p>
+            <p>
+                <code>git status</code>
+            </p>
+            <p>Zjištění aktuálního stavu repozitáře - červeně zobrazeny změněné soubory, které nejsou součástí staging
+                area, zeleně soubory ve staging area připravené na commit.</p>
+            <p>
+                <code>git add -all</code>
+            </p>
+            <p>Do staging area budou umístěny všechny soubory.</p>
+            <p>
+                <code>git add README.md</code>
+            </p>
+            <p>Do staging area bude umístěn soubor README.md.</p>
+            <p>
+                <code>git add *.jpg, *.png</code>
+            </p>
+            <p>Do staging area budou umístěny soubory (obrázky) s příponou jpg a png.</p>
+            <p>
+                <code>git reset</code>
+            </p>
+            <p>Ze staging area budou uvolněny všechny umístěné soubory.</p>
+            <p>
+                <code>git reset *.jpg</code>
+            </p>
+            <p>Ze staging area budou uvolněny soubory jpg.</p>
+        </section>
+        <h2>Synchronizace lokálního a vzdáleného repozitáře</h2>
+        <section>
+            <p>Plnohodnotných služeb Gitu dosáhneme propojením lokálního a vzdáleného repozitáře. Pomocí příkazu git
+                push
+                poté můžeme aktualizovat obsah repozitáře z našeho počítače
+                do repozitáře v cloudu. Příkaz git pull se zase používá pro obrácený postup, kdy potřebujeme
+                synchronizovat
+                obsah lokálního repozitáře podle stavu vzdáleného repozitáře.</p>
+            <figure>
+                <img src="images/git-local-05.jpg" alt="Konzolová aplikace Gitu" class="img-fluid">
+                <figcaption>Git - synchronizace lokálního a vzdáleného repozitáře</figcaption>
+            </figure>
+            <code>git remote add origin https://github.com/prezentace/pvy1.git</code>
+            <p>Připojí vzdálený repozitář pod názvem origin (obvykle zadané pojmenování), aby mohl být synchronizován s
+                lokálním repozitářem.</p>
+            <code>git push -u origin master</code>
+            <p>Aktualizuje stav vzdáleného repozitáře (origin) podle lokálního repozitáře (master - základní, hlavní
+                větev
+                repozitáře).</p>
+            <code>git push</code>
+            <p>Zkrácená podoba příkazu, která se používá u následujících aktualizací.</p>
+            <code>git pull</code>
+            <p>Aktualizuje stav lokálního repozitáře podle vzdáleného repozitáře.</p>
+            <figure>
+                <img src="images/git-local-06.jpg" alt="Konzolová aplikace Gitu" class="img-fluid">
+                <figcaption>Git - odeslání dalších commitů na vzdálených repozitář</figcaption>
+            </figure>
+            <h4>Informace o provedených snapshotech</h4>
+            <figure>
+                <img src="images/git-local-07.jpg" alt="Konzolová aplikace Gitu" class="img-fluid">
+                <figcaption>Git - informace o provedených snapshotech</figcaption>
+            </figure>
+            <code>git log</code>
+            <p>Vypíše přehled jednotlivých commitů.</p>
+            <code>git log --oneline</code>
+            <p>Vypíše zkrácený, jednořádkový přehled commitů.</p>
+            <figure>
+                <img src="images/git-local-08.jpg" alt="Konzolová aplikace Gitu" class="img-fluid">
+                <figcaption>Git - zobrazení obsahu commitů</figcaption>
+            </figure>
+            <code>git show</code>
+            <p>Přehled o posledním commitu.</p>
+            <code>git show [oznaceni_commitu]</code>
+            <p>Specifikací počátečních znaků (min. 4) získáme přehled o libovolném ze zaznamenaných snapshotů -
+                commitů.</p>
+            <figure>
+                <img src="images/git-local-09.jpg" alt="Konzolová aplikace Gitu" class="img-fluid">
+                <figcaption>Git - jednořádkový výpis commitů (snapshotu) a zobrazení konkrétního commitu</figcaption>
+            </figure>
+        </section>
     </main>
     <footer class="bg-dark text-white text-center p-5 mt-5">
         <p>&copy; 2019 SŠPU Opava, autor Marek Lučný</p>
@@ -474,12 +523,19 @@
     </header>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            $("section").hide();
+            $("h2").on("click", function () {
+                $(this).nextUntil("h2").toggle(500);
+            });
+        })
+    </script>
 </body>
 
 </html>
