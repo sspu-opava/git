@@ -437,11 +437,36 @@
         <code>git remote add origin https://github.com/prezentace/pvy1.git</code>
         <p>Připojí vzdálený repozitář pod názvem origin (obvykle zadané pojmenování), aby mohl být synchronizován s lokálním repozitářem.</p>
         <code>git push -u origin master</code>
-        <p>Aktualizuje stav vzdáleného repozitáře (origin) podle lokálního repozitáře (master).</p>
+        <p>Aktualizuje stav vzdáleného repozitáře (origin) podle lokálního repozitáře (master - základní, hlavní větev repozitáře).</p>
         <code>git push</code>
         <p>Zkrácená podoba příkazu, která se používá u následujících aktualizací.</p>
         <code>git pull</code>
         <p>Aktualizuje stav lokálního repozitáře podle vzdáleného repozitáře.</p>
+        <figure>
+            <img src="images/git-local-06.jpg" alt="Konzolová aplikace Gitu" class="img-fluid">
+            <figcaption>Git - odeslání dalších commitů na vzdálených repozitář</figcaption>
+        </figure>
+        <h4>Informace o provedených snapshotech</h4>
+        <figure>
+            <img src="images/git-local-07.jpg" alt="Konzolová aplikace Gitu" class="img-fluid">
+            <figcaption>Git - informace o provedených snapshotech</figcaption>
+        </figure>
+        <code>git log</code>
+        <p>Vypíše přehled jednotlivých commitů.</p>
+        <code>git log --oneline</code>
+        <p>Vypíše zkrácený, jednořádkový přehled commitů.</p>
+        <figure>
+            <img src="images/git-local-08.jpg" alt="Konzolová aplikace Gitu" class="img-fluid">
+            <figcaption>Git - zobrazení obsahu commitů</figcaption>
+        </figure>
+        <code>git show</code>
+        <p>Přehled o posledním commitu.</p>
+        <code>git show [oznaceni_commitu]</code>
+        <p>Specifikací počátečních znaků (min. 4) získáme přehled o libovolném ze zaznamenaných snapshotů - commitů.</p>
+        <figure>
+            <img src="images/git-local-09.jpg" alt="Konzolová aplikace Gitu" class="img-fluid">
+            <figcaption>Git - jednořádkový výpis commitů (snapshotu) a zobrazení konkrétního commitu</figcaption>
+        </figure>
     </main>
     <footer class="bg-dark text-white text-center p-5 mt-5">
         <p>&copy; 2019 SŠPU Opava, autor Marek Lučný</p>
